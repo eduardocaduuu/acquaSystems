@@ -1,0 +1,15 @@
+{
+  "name": "portal-acqua-sistemas",
+  "version": "1.0.0",
+  "description": "Portal central do Grupo Alcina Maria",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

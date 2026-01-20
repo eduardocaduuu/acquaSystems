@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "nome": "Ponto Eletrônico",
+    "setor": "RH",
+    "url": "https://google.com",
+    "descricao": "Registro de ponto diário"
+  },
+  {
+    "id": 2,
+    "nome": "Holerites",
+    "setor": "RH",
+    "url": "https://google.com",
+    "descricao": "Consulta de pagamentos"
+  },
+  {
+    "id": 3,
+    "nome": "Fluxo de Caixa",
+    "setor": "FINANCEIRO",
+    "url": "https://google.com",
+    "descricao": "Controle financeiro"
+  },
+  {
+    "id": 4,
+    "nome": "Gestão de Leads",
+    "setor": "COMERCIAL",
+    "url": "https://google.com",
+    "descricao": "CRM de Vendas"
+  },
+  {
+    "id": 5,
+    "nome": "Tickets TI",
+    "setor": "ADMINISTRATIVO",
+    "url": "https://google.com",
+    "descricao": "Abertura de chamados"
+  }
+]
