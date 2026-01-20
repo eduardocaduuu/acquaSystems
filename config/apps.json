@@ -22,13 +22,20 @@
   },
   {
     "id": 4,
-    "nome": "Gestão de Leads",
+    "nome": "Ativos e Multimarcas",
     "setor": "COMERCIAL",
-    "url": "https://google.com",
-    "descricao": "CRM de Vendas"
+    "url": "https://multimarks-active-circles.onrender.com",
+    "descricao": "Clientes ativos e multimarcas do ciclo"
   },
   {
     "id": 5,
+    "nome": "Ranking Supervisoras",
+    "setor": "COMERCIAL",
+    "url": "https://dashsupervision.onrender.com",
+    "descricao": "Visão de clientes, metas e objetivos"
+  },
+  {
+    "id": 6,
     "nome": "Tickets TI",
     "setor": "ADMINISTRATIVO",
     "url": "https://google.com",

@@ -368,18 +368,24 @@
             const senha = document.getElementById('inputSenha').value;
             const modal = document.getElementById('modalOverlay');
 
-            // 1. PIN Master (7776)
+            // 1. PIN Master (7776) - acesso a qualquer setor
             if (senha === PIN_GERENCIA) {
-                // Efeito visual de sucesso antes de redirecionar (opcional)
-                alert(`Acesso Master Permitido: ${setorAtual}`);
                 modal.style.display = 'none';
+                // Se for GERENCIA, vai para uma página especial ou lista todos os setores
+                if (setorAtual === 'GERENCIA') {
+                    // Redireciona para setor master com acesso total
+                    window.location.href = `setor.html?key=MASTER`;
+                } else {
+                    // Acesso master a um setor específico
+                    window.location.href = `setor.html?key=${encodeURIComponent(setorAtual)}`;
+                }
                 return;
             }
 
-            // 2. PIN do Setor
+            // 2. PIN do Setor específico
             if (setorAtual !== 'GERENCIA' && senha === SENHAS[setorAtual]) {
-                alert(`Bem-vindo ao ${setorAtual}`);
                 modal.style.display = 'none';
+                window.location.href = `setor.html?key=${encodeURIComponent(setorAtual)}`;
             } else {
                 // Feedback visual de erro (chacoalhar input)
                 const input = document.getElementById('inputSenha');
