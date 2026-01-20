@@ -36,6 +36,20 @@
   },
   {
     "id": 6,
+    "nome": "Supervisão de Estoque",
+    "setor": "LOGISTICO",
+    "url": "https://organizationstock.onrender.com",
+    "descricao": "Itens negativos, zerados e duplicados"
+  },
+  {
+    "id": 7,
+    "nome": "Entrada de Mercadorias",
+    "setor": "LOGISTICO",
+    "url": "https://supervisionstock.onrender.com",
+    "descricao": "Notas fiscais e itens recebidos"
+  },
+  {
+    "id": 8,
     "nome": "Tickets TI",
     "setor": "ADMINISTRATIVO",
     "url": "https://google.com",
