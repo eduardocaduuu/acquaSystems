@@ -1,24 +1,274 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Acqua Sistemas</title>
-    <link rel="stylesheet" href="assets/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>Portal de Setores - Com Acesso Gerencial</title>
+    <style>
+        /* Estilos Gerais */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            width: 90%;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        /* Estilo dos Cards */
+        .card {
+            background: white;
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 4px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+            border-bottom-color: #007bff;
+        }
+
+        .card h3 {
+            margin: 0;
+            color: #444;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: block;
+            color: #007bff;
+        }
+
+        /* Modal de Autenticação */
+        .modal-overlay {
+            display: none; /* Escondido por padrão */
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(3px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeIn 0.2s ease-in-out;
+        }
+
+        .modal {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            width: 320px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .modal h2 {
+            margin-top: 0;
+            color: #333;
+            font-size: 1.5rem;
+        }
+
+        .modal p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0 20px 0;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 1.5rem;
+            text-align: center;
+            letter-spacing: 5px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .modal input:focus {
+            border-color: #007bff;
+        }
+
+        .btn-entrar {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+        }
+
+        .btn-entrar:hover {
+            background: #0056b3;
+        }
+
+        .btn-fechar {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .btn-fechar:hover {
+            color: #333;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
 </head>
 <body>
-    <div class="glow-bg"></div>
-    <header>
-        <div class="logo">
-            <h1>PORTAL ACQUA SISTEMAS</h1>
-            <p>GRUPO ALCINA MARIA</p>
-        </div>
-    </header>
-    <main>
-        <div class="grid-container" id="sectors-grid"></div>
-    </main>
-    <footer>© 2026 Acqua Sistemas</footer>
-    <script src="assets/app.js"></script>
+
+<div class="container">
+    <div class="card" onclick="abrirModal('GERENCIA')" style="border-bottom-color: #ff9800;">
+        <span class="icon">🔑</span>
+        <h3>Acesso Master</h3>
+    </div>
+
+    <div class="card" onclick="abrirModal('RH')">
+        <span class="icon">👥</span>
+        <h3>RH</h3>
+    </div>
+    <div class="card" onclick="abrirModal('GENTE_CULTURA')">
+        <span class="icon">✨</span>
+        <h3>Gente e Cultura</h3>
+    </div>
+    <div class="card" onclick="abrirModal('FINANCEIRO')">
+        <span class="icon">💰</span>
+        <h3>Financeiro</h3>
+    </div>
+    <div class="card" onclick="abrirModal('ADMINISTRATIVO')">
+        <span class="icon">📂</span>
+        <h3>Administrativo</h3>
+    </div>
+    <div class="card" onclick="abrirModal('LOGISTICO')">
+        <span class="icon">📦</span>
+        <h3>Logístico</h3>
+    </div>
+    <div class="card" onclick="abrirModal('COMERCIAL')">
+        <span class="icon">🤝</span>
+        <h3>Comercial</h3>
+    </div>
+    <div class="card" onclick="abrirModal('MARKETING')">
+        <span class="icon">📢</span>
+        <h3>Marketing</h3>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <button class="btn-fechar" onclick="fecharModal()">&times;</button>
+        <h2 id="tituloModal">Autenticação</h2>
+        <p>Insira o PIN do Setor ou o <strong>PIN Gerência</strong></p>
+        
+        <input type="password" id="inputSenha" placeholder="****" maxlength="4" onkeypress="handleEnter(event)">
+        
+        <button class="btn-entrar" onclick="verificarSenha()">Acessar</button>
+    </div>
+</div>
+
+<script>
+    // --- Configuração das Senhas ---
+    const SENHAS = {
+        'RH': '3030',
+        'GENTE_CULTURA': '3232',
+        'FINANCEIRO': '1212',
+        'ADMINISTRATIVO': '2020',
+        'LOGISTICO': '8080',
+        'COMERCIAL': '1010',
+        'MARKETING': '1515'
+    };
+
+    const PIN_GERENCIA = '7776'; // PIN Mestre
+    
+    let setorAtual = '';
+
+    // Função para abrir o modal
+    function abrirModal(setor) {
+        setorAtual = setor;
+        const titulo = setor === 'GERENCIA' ? 'Acesso Master' : setor.replace('_', ' & ');
+        
+        document.getElementById('tituloModal').innerText = `Acesso: ${titulo}`;
+        document.getElementById('inputSenha').value = ''; // Limpa o campo
+        document.getElementById('modalOverlay').style.display = 'flex';
+        document.getElementById('inputSenha').focus();
+    }
+
+    // Função para fechar o modal
+    function fecharModal() {
+        document.getElementById('modalOverlay').style.display = 'none';
+        setorAtual = '';
+    }
+
+    // Função que verifica se apertou ENTER
+    function handleEnter(event) {
+        if (event.key === 'Enter') {
+            verificarSenha();
+        }
+    }
+
+    // --- LÓGICA PRINCIPAL DE VALIDAÇÃO ---
+    function verificarSenha() {
+        const senhaDigitada = document.getElementById('inputSenha').value;
+
+        // 1. Verifica se é o PIN MESTRE (Gerência)
+        if (senhaDigitada === PIN_GERENCIA) {
+            alert(`ACESSO GERENCIAL PERMITIDO!\nRedirecionando para o painel Master ou Setor ${setorAtual}...`);
+            // Aqui você colocaria: window.location.href = 'painel_gerente.html';
+            fecharModal();
+            return;
+        }
+
+        // 2. Se não for gerente, verifica se é o PIN do setor específico
+        // (Ignora validação específica se o card clicado foi o próprio card "Master")
+        if (setorAtual !== 'GERENCIA' && senhaDigitada === SENHAS[setorAtual]) {
+            alert(`Bem-vindo ao setor: ${setorAtual}`);
+            // Aqui você colocaria: window.location.href = 'pagina_setor.html';
+            fecharModal();
+        } else {
+            // 3. Se não for nenhum dos dois
+            alert('ACESSO NEGADO: PIN incorreto.');
+            document.getElementById('inputSenha').value = '';
+            document.getElementById('inputSenha').focus();
+        }
+    }
+</script>
+
 </body>
 </html>
